@@ -1,0 +1,25 @@
+.box a
+{
+    text-decoration: none;
+    
+}
+ul
+{
+    list-style-type: none;
+}
+.box
+{
+     width: 200px;
+    display: inline-block;
+    vertical-align: top;
+    
+}
+.box img
+{
+    width: 80%;
+}
+body
+{
+    background-color:floralwhite;
+    
+}
