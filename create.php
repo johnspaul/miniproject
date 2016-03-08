@@ -1,3 +1,7 @@
+<?php
+error_reporting(E_ALL);
+
+?>
 <!doctype html>
 <meta charset="utf-8">
 <html>

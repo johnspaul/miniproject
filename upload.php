@@ -1,5 +1,7 @@
 <?php
 include('src/class.upload.php');
+error_reporting(E_ALL);
+
 
 $dir_dest = (isset($_GET['dir']) ? $_GET['dir'] : 'images/products');
 $dir_pics = (isset($_GET['pics']) ? $_GET['pics'] : $dir_dest);

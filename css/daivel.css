@@ -1,0 +1,120 @@
+@charset "utf-8";
+/* CSS Document */
+
+.menu-link
+{
+	z-index:10;
+	font-weight:bold;
+	font-family:"caviar Dreams";
+	color:rgba(255,255,255,1);
+	text-decoration:none;
+	float:left;
+	margin-left:20px;
+	width:90px;
+	height:25px;
+	background-color:rgba(51,153,255,0);
+	opacity:1;
+	text-align:center;
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px; 
+}
+.menu-link:hover
+{
+	background-color:rgba(51,153,255,1);
+	animation-delay:2s;
+	-webkit-animation-delay:2s;
+	-webkit-transition:background-color 1s ease-out;
+}
+
+.team-photo:nth-of-type(4)
+{
+	clear:left;
+	
+}
+.photo
+{
+	
+	background-image:url(WIN_20160205_15_57_14_Pro.jpg);
+	background-position:center;
+	background-size:cover;
+	position:absolute;
+	width:200px;
+	height:200px;
+	border-radius:50%;
+	
+}
+.photo2
+{
+	background-image:url(WIN_20160205_15_57_14_Pro.jpg);
+	}
+	.photo1
+	{background-image:url(WIN_20160205_15_57_14_Pro.jpg);}
+	.photo3
+	{
+		background-image:url(WIN_20160205_15_57_14_Pro.jpg);
+	}
+#team-details:hover
+{
+	animation-delay:2s;
+	-webkit-animation-delay:2s;
+	-webkit-transition:opacity 1s ease-out;
+	transform: translate(0,-5em);
+	-webkit-transition: 1s ease-in-out;
+    -moz-transition: 1s ease-in-out;
+    -o-transition: 1s ease-in-out;
+    transition: 1s ease-in-out;
+	-webkit-transform: scale(-2);
+    -moz-transform: scale(-2);
+    -o-transform: scale(-2);
+    -ms-transform: scale(-2);
+    transform: scale(-2);
+	opacity:0;
+}
+#team-details
+{
+	position:absolute;
+	width:200px;
+height:150px;
+background-color:rgba(51,153,255,.6);
+z-index:1;
+border-top-left-radius:150px;
+border-top-right-radius:150px;
+border-bottom-left-radius:60px;
+border-bottom-right-radius:60px;
+text-align:center;
+text-justify:auto;
+animation-delay:2s;
+	-webkit-animation-delay:2s;
+	-webkit-transition:opacity 1s linear;
+	font-family:"Open Sans";
+opacity:1;
+
+}
+#team-details img
+{
+	display:none;
+}
+#team-details img:hover
+{
+	display:block;
+}
+#text
+{
+	color:rgba(255,255,255,1);
+}
+
+.team-photo
+{
+	margin-top:20px;
+	display:table-cell;
+left:7%;
+	margin-left:10%;
+	position:relative;	
+	width:200px;
+	height:200px;
+	border-radius:50%;
+	box-shadow:rgba(255,255,255,1);
+	float:left;
+} 
