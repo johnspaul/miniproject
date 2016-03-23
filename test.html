@@ -1,0 +1,25 @@
+<html>
+    <head>
+       <script type="text/javascript" src="js/psd.min.js"></script>
+    </head>
+  <div id="image"></div>
+
+<?php
+    
+require 'vendor/autoload.php';
+    require 'classPhpPsdReader.php';
+  
+//header( "Content-type: image/jpeg" );
+
+$imagine = new Imagine\Gd\Imagine();
+    //$image = $imagine->open('image.psd');
+     //echo "<img src='data:image/jpeg;base64," . base64_encode( $image ) . "' />";
+    //echo "Image contains " . count($image->layers()) . " layers";
+   
+    $image=imagejpeg(imagecreatefrompsd('test.psd'));
+    echo $image;
+    
+    ?>
+    
+
+</html>
