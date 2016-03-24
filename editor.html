@@ -47,11 +47,15 @@ function canvasLoadImage(imgData){
     img.onload = function(){
         
         // Load the Canvas & Context
-        var canvas = document.getElementById('canvas');
-        var context = canvas.getContext('2d');
-
+       // var canvas = document.getElementById('canvas');
+        //var context = canvas.getContext('2d');
+var canvas = new fabric.Canvas('canvas');
         // Draw the image
-        context.drawImage(img, 0, 0);
+        fabric.Image.fromURL(imgData, function(oImg) {
+  canvas.add(oImg);
+           
+});
+        //context.drawImage(img, 0, 0);
 
         // More here?
     }
