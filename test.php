@@ -1,11 +1,8 @@
 <html>
     <head>
-    
     </head>
   <div id="image"></div>
-
 <?php
-    
 //require 'vendor/autoload.php';
     require 'classPhpPsdReader.php';
 
