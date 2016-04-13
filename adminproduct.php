@@ -1,22 +1,3 @@
-<?php
-error_reporting(E_ALL);
-
-?>
-<!doctype html>
-<meta charset="utf-8">
-<html>
-    <link rel="stylesheet" href="css/products.css">
-    <script src="jquery-2.1.1.js"></script>
-    <body>
-        
-       
-    <form enctype="multipart/form-data" method="post" action="upload.php">
-    <label for="gname">Gift name</label><input type="text" name="gname">
-  <input type="file" size="32" name="image_field" value="">
-  <input type="submit" name="Submit" value="upload">
-
-        </form>
-        
          <div id="products">
     <?php
     
@@ -67,5 +48,3 @@ $res=mysqli_query($db,$sql);
             font-family: 
 sans-serif;
         }
-    </style>
-</html>

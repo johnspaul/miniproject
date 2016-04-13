@@ -1,9 +1,14 @@
 <html>
     <head> <script src="js/fabric.min.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="css/edit.css">
     </head>
+    <?php
+require_once('navigation.php');
+?>
 	<form id="uploadImg" runat="server">
   <input type="file" id="uploadedImg"/>
 </form>
+       <span  id="text-btn">T</span>
 <canvas id="canvas"></canvas>
 <script type="text/javascript">
     var canvas = new fabric.Canvas('canvas');
@@ -23,6 +28,7 @@ var reader = new FileReader();
             height:110,
             width:110,
       });
+      
       canvas.centerObject(image);
       canvas.add(image);
       canvas.renderAll();
@@ -30,5 +36,11 @@ var reader = new FileReader();
   }
   reader.readAsDataURL(e.target.files[0]);
 }
+  document.getElementById('text-btn').onclick=function(){canvas.add(new fabric.IText('Tap and Type', { 
+  fontFamily: 'arial black',
+  left: 0, 
+  top: 0 ,fontSize:20,
+            fill:'#000'
+}))};
     </script>
 </html>
