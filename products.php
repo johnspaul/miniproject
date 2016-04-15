@@ -39,6 +39,7 @@ $res=mysqli_query($db,$sql);
         <span class="gid"><?php echo $row['gid']; ?></span>
        <!--<img id="cart" class="cart" src="images/cart-add-icon.png" width="40px">
            -->  <h4> <?php echo $row['gname']; ?></h4>
+        <span><?php echo $row['']; ?></span>
             </a>
         </li>
     <?php

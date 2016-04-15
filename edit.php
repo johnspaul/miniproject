@@ -15,7 +15,7 @@ mysqli_select_db($db,"$db_name")or die("cannot select DB");
 
 <form enctype="multipart/form-data" method="post" action="upload.php">
     <label for="gname">Gift name</label><input type="text" name="gname" value="<?php echo $row['gname']; ?>">
-  <input type="file" size="32" name="image_field" value="<?php ?>">
+  <input type="file" size="32" name="image_field" value="<?php echo $row['gimage']; ?>">
   <input type="submit" name="Submit" value="upload">
 
         </form>

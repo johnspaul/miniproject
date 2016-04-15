@@ -2,7 +2,9 @@
 session_start();
 $userid=$_SESSION['id'];
 $string=$_POST['stringjson'];
-echo $string;
+$image=$_POST['imagejpeg'];
+
+//echo $string;
 $host="localhost";
 $username="root"; 
 $password=""; 
@@ -10,13 +12,23 @@ $db_name="giftagift";
 $tbl_name="cards"; 
 $db=mysqli_connect("$host", "$username", "$password")or die("cannot connect"); 
 mysqli_select_db($db,"$db_name")or die("cannot select DB");
-$sql="insert into $tbl_name(userid,jsonstring) values('$userid','$string')";
+$sql="insert into $tbl_name(userid,jsonstring,image) values('$userid','$string','$image')";
 //echo $sql;
 $res=mysqli_query($db,$sql);
     if($res)
         echo 'success';
 else
     echo 'unsuccessful';
+//$image=str_replace('data:image/png;base64,','/',$image);
+//$image = str_replace(' ', '+', $image);
+//echo $image;
+?>
+<img src="<?php echo $image; ?>">
+<?php
+//$imagebin=base64_decode($image);
+//$code=imagecreatefromstring($imagebin);
+//header('content-type:image/png');
+//imagepng($code);
 ?>
 <html>
     <head>
@@ -29,12 +41,10 @@ else
          var canvas = new fabric.Canvas('canvas');
 canvas.setHeight(480);
 canvas.setWidth(640);
-        var string=<?php echo $_POST['stringjson']; ?>;
-        alert(string);
-         var el = document.getElementById('insertHere');
-el.innerHTML = '<div>Print this after the script tag:'+string+'</div>';
+var mystring = <?php echo json_encode($string); ?>;        alert(mystring);
         
-    var json=JSON.parse(string);
+        //document.write(string);
+    var json=JSON.parse(mystring);
         
         canvas.loadFromJSON(json, function() {
 

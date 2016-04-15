@@ -19,18 +19,21 @@ include_once('navigation.html');
         <input type="button" id="save-btn" value="save">
 <form method="post" action="save.php" id="formjson" >
     <input type="text" id="stringjson" name="stringjson" value="">
+    <input id="imagejpeg" value="" name="imagejpeg">
     </form>
 <script type="text/javascript">
     document.getElementById('save-btn').onclick=function()
     {
 var json = canvas.toJSON();
         var data=JSON.stringify(json);
+        var dataurl=canvas.toDataURL("image/jpeg");
+        document.getElementById('imagejpeg').value= dataurl;
         document.getElementById('stringjson').value= data;
         document.getElementById('formjson').submit();
 canvas.clear();
          json=JSON.parse(data);
         canvas.loadFromJSON(json, function() {
-
+var dataurl=canvas.toDataURL("image/jpeg");
   // making sure to render canvas at the end
   canvas.renderAll();
 
@@ -71,7 +74,7 @@ var reader = new FileReader();
             fill:'#000'
 }))};
     
-document.getElementById('#cropB').onclick(function() {
+document.getElementById('#cropB').onclick=function() {
     image.selectable = true;
     disabled = true;
     rectangle.visible = false;
@@ -91,7 +94,7 @@ document.getElementById('#cropB').onclick(function() {
         canvas.add(image);
         canvas.renderAll();
     };
-});
+};
     
     document.getElementById('save-btn').onclick=function()
     {
