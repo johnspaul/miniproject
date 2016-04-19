@@ -1,3 +1,27 @@
+#top ul{
+    position:absolute;
+    top: 0;
+  margin-top: 10px;
+    margin-left: 40%;
+    z-index: 200;
+}
+#top li
+{
+    float: left;
+    margin-left: 20px;
+    font-family: "above demo" ;
+    display: block;
+    width: 60px;
+    height: 18px;
+    transition: all .5s ;
+    border-radius: 5px;
+}
+#top li:hover
+{
+    background-color: #142735;
+    color: #FFFFFF
+}
+
 #login
 {
     z-index: 100;
@@ -17,6 +41,7 @@
     margin-top: .8%;
     color: white;
     font-family: "ubuntu light";
+    cursor: pointer;
 }
 #cart-btn h1
 {
@@ -179,9 +204,11 @@ text-decoration: none;
 }
 #home-image
 {
-	background-image:url(images/Gift.jpg);
-	opacity:.7;
-	background-color:rgba(0,0,0,1);
+	/*background-image:url(images/Gift.jpg);
+	*/
+    background-color: white;
+    opacity:.7;
+	
 	width:100%;
 	height:100%;
 	background-repeat:no-repeat;
@@ -198,7 +225,7 @@ html
     background-repeat: no-repeat;
     background-size: cover;
 */
-    background-color: black;
+    background-color: #F4F4F4;
 }
 form
 		{

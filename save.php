@@ -3,6 +3,7 @@ session_start();
 $userid=$_SESSION['id'];
 $string=$_POST['stringjson'];
 $image=$_POST['imagejpeg'];
+$editorsave=$_POST['editorsave'];
 
 //echo $string;
 $host="localhost";
@@ -12,8 +13,16 @@ $db_name="giftagift";
 $tbl_name="cards"; 
 $db=mysqli_connect("$host", "$username", "$password")or die("cannot connect"); 
 mysqli_select_db($db,"$db_name")or die("cannot select DB");
+if(isset($_POST['editorsave']))
+{
+    $sql="update $tbl_name set jsonstring='$string',image='$image' where cardid='$editorsave'";
+    echo $editorsave;
+}
+else
+{
 $sql="insert into $tbl_name(userid,jsonstring,image) values('$userid','$string','$image')";
-//echo $sql;
+}
+
 $res=mysqli_query($db,$sql);
     if($res)
         echo 'success';

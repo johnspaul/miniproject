@@ -20,12 +20,61 @@ include_once('navigation.html');
 <form method="post" action="save.php" id="formjson" >
     <input type="text" id="stringjson" name="stringjson" value="">
     <input id="imagejpeg" value="" name="imagejpeg">
+    <input id="editorsave" value="" name="editorsave" type="number">
     </form>
-<script type="text/javascript">
+    <?php
+if(isset($_GET['gid']))
+        $cardid=$_GET['gid'];
+   else
+       $cardid=0;
+   
+$host="localhost"; 
+$username="root"; 
+$password=""; 
+$db_name="giftagift";  
+$tbl_name="cards"; 
+$db=mysqli_connect("$host", "$username", "$password")or die("cannot connect"); 
+mysqli_select_db($db,"$db_name")or die("cannot select DB");
+$sql="select * from $tbl_name where cardid='$cardid'";
+    $res=mysqli_query($db,$sql);
+    $row=mysqli_fetch_array($res);
+    $string=$row['jsonstring'];
+
+        
+    ?><script type="text/javascript">
+
+        var canvas = new fabric.Canvas('canvas');
+canvas.setHeight(480);
+canvas.setWidth(640);
+    var mystring = <?php echo json_encode($string); ?>;        //alert(mystring);
+      var cardid=<?php echo($cardid); ?>
+     //   alert('hi');
+        //document.write(string);
+    if(cardid!=0)
+    {
+          var json1=JSON.parse(mystring);
+        
+        canvas.loadFromJSON(json1, function() {
+
+ var dataurl=canvas.toDataURL("image/jpeg");
+  canvas.renderAll();
+
+ 
+  console.log(canvas.item(0).name);
+        });
+   document.getElementById('editorsave').value=cardid;
+    }
+    else{
+        var ele=document.getElementById('formjson');
+        var ele1=document.getElementById('editorsave');
+        ele.removeChild(ele1);
+    }
     document.getElementById('save-btn').onclick=function()
     {
+        
 var json = canvas.toJSON();
         var data=JSON.stringify(json);
+        
         var dataurl=canvas.toDataURL("image/jpeg");
         document.getElementById('imagejpeg').value= dataurl;
         document.getElementById('stringjson').value= data;
@@ -42,9 +91,9 @@ var dataurl=canvas.toDataURL("image/jpeg");
 });
        //alert(data);
     };
-    var canvas = new fabric.Canvas('canvas');
-canvas.setHeight(480);
-canvas.setWidth(640);
+    //var canvas = new fabric.Canvas('canvas');
+//canvas.setHeight(480);
+//canvas.setWidth(640);
 document.getElementById('uploadImg').onchange = function handleImage(e) {
 var reader = new FileReader();
   reader.onload = function (event){
@@ -96,13 +145,7 @@ document.getElementById('#cropB').onclick=function() {
     };
 };
     
-    document.getElementById('save-btn').onclick=function()
-    {
-//var json = canvas.toJSON();
-
-        
-        alert("hi");
-    };
+   
   
     </script>
 </html>

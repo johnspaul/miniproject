@@ -7,7 +7,7 @@
         
     </head>
     <body>
-         <div id="top"><a href="#" id="login-btn"><?php 
+         <div id="top"><ul><li>home</li><li>gifts</li><li>cards</li></ul><a href="#" id="login-btn"><?php 
              session_start();
              if(!isset($_SESSION['username']))
                  echo 'LOGIN|SIGNUP' ;
@@ -23,7 +23,7 @@
   </div>
         <span id="cart-btn"><img src="images/cart.png" width="30px"><h1>CART</h1></span>
         </div>
-           <div id="home-image"></div>
+        <!--   <div id="home-image"></div>-->
         <div id="login">
         <form method="post" action="index.php">
             Username<input type="text" name="login-name">
@@ -38,10 +38,15 @@
         </div>
         -->
         <script type="text/javascript">
+              document.getElementById('cart-btn').onclick=function()
+            {
+                window.location.href="cart.php";
+            };
         document.getElementById('login-btn').onclick=function(){
             
             document.getElementById('login').style.display='block';
         };
+          
             </script>
             <?php
 //error_reporting(E_ALL^E_NOTICE);

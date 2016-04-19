@@ -21,7 +21,7 @@
     <?php
     
 $db=mysqli_connect('localhost','root','','giftagift')OR DIE('cannot connect');
-    $table='products';
+    $table='cards';
     mysqli_select_db($db,'giftagift');
     
     $sql="select * from $table";
@@ -35,12 +35,12 @@ $res=mysqli_query($db,$sql);
     ?>
         <li class="box waves-effect" id="bx1">
     <a href="#">
-        <img src="<?php echo $row['gimage']; ?>">
-        <span class="gid"><?php echo $row['gid']; ?></span>
+        <img src="<?php echo $row['image']; ?>">
+        <span class="gid"><?php echo $row['cardid']; ?></span>
        <img id="cart" class="cart" src="images/cart-add-icon.png" width="40px">
-        <span id="prod-name"> <?php echo $row['gname']; ?></span>
-        <span id="price">RS.<?php echo $row['price']; ?></span>
-            </a>
+        <!--<span id="prod-name"> <?php echo $row['gname']; ?></span>
+        <span><?php echo $row['price']; ?></span>
+            --></a>
         </li>
     <?php
     }
@@ -51,7 +51,7 @@ $res=mysqli_query($db,$sql);
           event.stopPropagation();
               var ab=$(this).siblings('span.gid').html(); 
              
-             window.location.href="addtocart.php?gid="+ab;
+             window.location.href="addtocardcart.php?gid="+ab;
              
       });
       $('.box').on('click',function(){
@@ -59,7 +59,7 @@ $res=mysqli_query($db,$sql);
       $('.cart').on('click',function(){
           Event.stopPropagation();
       });
-          window.location.href="details.php?gid="+a;
+          window.location.href="edit2.php?gid="+a;
       });
 
     </script>   
