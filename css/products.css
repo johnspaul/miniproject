@@ -1,6 +1,29 @@
+
+#ckout-btn
+{
+    display: inline-block;
+    background-color: #3FA2B7;
+    border-radius: 5px;
+    width: 90px;
+    height: 35px;
+    color: white;
+    font-family: 'sans-serif';
+    text-align: center;
+    cursor: pointer;
+}
 #card-head
 {
+display: inline-block;
+    float: left;
+    font-family: 'sans-serif' ;
+    opacity: .7;   
+}
+#cart-total
+{
+ font-family: 'sans-serif' ;
+    opacity: .7;   
     display: block;
+    margin-top: 20px;
 }
 #price
 {
@@ -13,7 +36,6 @@
 {
      font-family: "above demo" ;
     font-size: 100%;
-    
 }
 nav
 {
@@ -24,8 +46,6 @@ nav
 {
     display: block;
     position: absolute;
-    
-    
 }
 .gid
 {
@@ -39,9 +59,7 @@ h2
 {
     display: block;
     margin-top: -10px;
-
 width: 37px;
-
 }
 #top
 {
@@ -59,7 +77,6 @@ width: 37px;
     top: 0;
     box-shadow: 0 4px 8px rgba(63, 162, 183,.19), 0 4px 4px rgba(0,0,0,0.23);
     z-index: 1;
-    
 }
 #top a
 {
@@ -76,6 +93,25 @@ width: 37px;
     margin-left: 12%;
     margin-right: 8%;
     margin-top: 15%;
+    float: left;
+    font-family: 'sans-serif';
+}
+#pincode
+{
+    border-top-style: none;
+    border-bottom-color: black;
+    border-left-style: none;
+    border-bottom-width: medium;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+#submit
+{
+    width: 10px;
+    height: 25px;
+    text-align: center;
+        
 }
 .box a
 {

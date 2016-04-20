@@ -239,7 +239,7 @@ form
 				margin: 0 0 1em 0;
 				font-family:"Open Sans";
 			}
-		
+		    form input[type="number"],
 			form input[type="text"],
 			form input[type="email"],
 			form input[type="password"],
@@ -318,6 +318,7 @@ input[type="button"],
 		input[type="reset"],
 		.button	
 		{
+            margin-top: 10px;
 			position: relative;
 			display: inline-block;
 			background: #03A9F4;

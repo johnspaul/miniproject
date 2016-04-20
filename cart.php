@@ -42,16 +42,16 @@ $res=mysqli_query($db,$sql);
         <span class="gid"><?php echo $row['gid']; ?></span>
        <img id="cart" class="cart" src="images/delete-btn.png" width="40px">
         <span id="prod-name"> <?php echo $row['gname']; ?></span>
-        <span><?php echo $row['price']; ?></span>
+        <span>RS.<?php echo $row['price']; ?></span>
             </a>
         </li>
-      
+       
     <?php
             $total=$total+$row['price'];
     }
     }
             ?>
-            <span id="card-head">CARDS</span>
+        </ul>     
             <?php
          $table='cardcart';
     mysqli_select_db($db,'giftagift');
@@ -62,6 +62,7 @@ $res=mysqli_query($db,$sql);
     ?>
     
         <ul class="gifts">
+            <span id="card-head">CARDS</span>
         <?php
     while($rows1=mysqli_fetch_array($res2))
     {
@@ -88,12 +89,37 @@ $res=mysqli_query($db,$sql);
             $total=$total+50;
     }
     }
-        ?>
+   
+            if($_SESSION['pinavail']==1)
+            {
+                
+     ?>       <form method="post" action="checkpincode.php">
+            PINCODE<input type="number" name="pincode" id="pincode" maxlength="6" value="<?php echo $_SESSION['pincode']; ?>">
+                <input type="submit" name="submit" value="check" id="submit">
+            </form>
+<?php echo 'available'; }
+            else
+            {?>
+                <form method="post" action="checkpincode.php">
+            PINCODE<input type="number" name="pincode" id="pincode" maxlength="6" value="">
+                <input type="submit" name="submit" value="check" id="submit">
+            </form>
+            <?php echo 'invalid pincode';}?>              <span id="cart-total">Amount Payable:RS. 
+                <?php echo $total; 
+            if($_SESSION['pinavail'])
+                echo'<div id="ckout-btn">Checkout</div>';?>
+           </span>
+        </ul>
+          
         
         
-        
-    </ul>
+       
+   
                <script type="text/javascript">
+                   $('#ckout-btn').on('click',function(){
+                       window.location.href="checkout.php";
+                   });
+                
       $('.box').on('click',function(){
           var a=$(this).children('a').children('span.gid').html();
  
