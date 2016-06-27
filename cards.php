@@ -19,12 +19,12 @@
     </nav>
     <div id="products">
     <?php
-    
+    $user=$_SESSION['id'];
 $db=mysqli_connect('localhost','root','','giftagift')OR DIE('cannot connect');
     $table='cards';
     mysqli_select_db($db,'giftagift');
     
-    $sql="select * from $table";
+    $sql="select * from $table where userid='$user'";
 $res=mysqli_query($db,$sql);
     $count=mysqli_num_rows($res);
     ?>
@@ -33,7 +33,7 @@ $res=mysqli_query($db,$sql);
     while($row=mysqli_fetch_array($res))
     {
     ?>
-        <li class="box waves-effect" id="bx1">
+        <li class="box waves-effect" id="bx1" style="margin-top:45px;">
     <a href="#">
         <img src="<?php echo $row['image']; ?>">
         <span class="gid"><?php echo $row['cardid']; ?></span>

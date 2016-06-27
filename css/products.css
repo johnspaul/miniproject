@@ -1,4 +1,23 @@
 
+.button {
+  border: 0;
+  outline: none;
+  border-radius: 0;
+  padding: 15px 0;
+    width: 50px;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: #1ab188;
+  color: #ffffff;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-appearance: none;
+}
+.button:hover, .button:focus {
+  background: #3EA0B5;
+}
 #ckout-btn
 {
     display: inline-block;
@@ -60,6 +79,13 @@ h2
     display: block;
     margin-top: -10px;
 width: 37px;
+}
+#cartd
+{
+    display: block;
+    margin-top: -10px;
+width: 37px;
+    
 }
 #top
 {
@@ -193,13 +219,13 @@ ul
 }
 .box
 {
-     width: 180px;
+    width: 180px;
     margin-top: 10px;
     margin-bottom: 20px;
     margin-right: 40px;
     display: inline-block;
     vertical-align: top;
-    height:280px;
+    height:300px;
     background-color: white;
     opacity: 1;
     border-radius: 3px;
@@ -227,6 +253,20 @@ opacity: 1;
     left: 12%;
     width:200px;
     
+}
+#price
+{
+    display: block;
+    margin-bottom: 20px;
+    font-size: 100%;
+}
+#desc
+{
+    
+}
+#bx1 
+{
+   
 }
 body
 {

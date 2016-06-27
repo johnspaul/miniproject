@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
     <head>
+        <link rel="stylesheet" href="login.css">
     </head>
     <body>
 <nav><?php
@@ -11,14 +12,63 @@ include_once('index.php');
 <div id="checkout">
 <div id="head1">Enter the delivery address</div>
 <form method="post" action="checkedout.php">
-Recievers name:<input type="text" name="recname">
-    Recievers address:<input type="text" name="field1">
-    <input type="text" name="field2">
+Recievers name:<input type="text" name="recname" required>
+    Recievers address:<input type="text" name="field1" required>
+    <input type="text" name="field2" required>
     Pincode:<input type="number" name="pinc" value="<?php echo $_SESSION['pincode']; ?>">
-    <input type="submit" name="submit" value="PAY">
+    <input type="submit" name="submit" value="PAY" class="button button-block">
 </form>
         </div>
     </body>
+    
+         <script type="text/javascript">
+        
+        
+        $('#form').find('input, textarea').on('keyup blur focus', function (e) {
+  
+  var $this = $(this),
+      label = $this.prev('label');
+
+	  if (e.type === 'keyup') {
+			if ($this.val() === '') {
+          label.removeClass('active highlight');
+        } else {
+          label.addClass('active highlight');
+        }
+    } else if (e.type === 'blur') {
+    	if( $this.val() === '' ) {
+    		label.removeClass('active highlight'); 
+			} else {
+		    label.removeClass('highlight');   
+			}   
+    } else if (e.type === 'focus') {
+      
+      if( $this.val() === '' ) {
+    		label.removeClass('highlight'); 
+			} 
+      else if( $this.val() !== '' ) {
+		    label.addClass('highlight');
+			}
+    }
+
+});
+
+$('.tab a').on('click', function (e) {
+  
+  e.preventDefault();
+  
+  $(this).parent().addClass('active');
+  $(this).parent().siblings().removeClass('active');
+  
+  target = $(this).attr('href');
+
+  $('.tab-content > div').not(target).hide();
+  
+  $(target).fadeIn(600);
+  
+});
+        </script>
+        
 </html>
 <style type="text/css">
     #head1
@@ -43,7 +93,7 @@ Recievers name:<input type="text" name="recname">
             30%;
         
     }
-    #checkout input[type=text],input[type=number]
+ /*   #checkout input[type=text],input[type=number]
     {
         width:250px;
         background-color: 
@@ -55,7 +105,7 @@ Recievers name:<input type="text" name="recname">
         border-radius: 
             3px;
         height:10px;
-    }
+    }*/
 </style>
 <?php
 

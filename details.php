@@ -30,10 +30,12 @@ mysqli_select_db($db,"$db_name")or die("cannot select DB");
     <li class="box" id="bx1">
     <a href="#">
         <img src="<?php echo $row['gimage']; ?>">
+        <h4> <?php echo $row['gname']; ?></h4>
+        <span id="price">RS.<?php echo $row['price']; ?></span>
         <span class="gid" id="gid"><?php echo $row['gid']; ?></span>
         <div id="cart" class="cart"  >Add to CART</div>
-    
-             <h4> <?php echo $row['gname']; ?></h4>
+    <div id="desc"><?php echo $row['description']; ?></div>
+             
             </a>
         </li>
          <script type="text/javascript">

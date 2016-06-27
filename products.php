@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <meta charset="utf-8">
 <html>
     <head>
@@ -24,9 +24,32 @@ $db=mysqli_connect('localhost','root','','giftagift')OR DIE('cannot connect');
     $table='products';
     mysqli_select_db($db,'giftagift');
     
+    $divisions=10;
     $sql="select * from $table";
-$res=mysqli_query($db,$sql);
+    $res=mysqli_query($db,$sql);
+        $number_of_rows=mysqli_num_rows($res);
     $count=mysqli_num_rows($res);
+        if(isset($_GET['page']))
+        {
+            $page=$_GET['page'];
+            $limit1=0;
+            $limit2=0;
+            //echo $limit1.':'.$limit2;
+            if($page==1)
+            {
+                $limit1=0;
+                $limit2=$divisions;
+            }
+            else
+            {
+                $limit2=$divisions;
+                $limit1=( ($page-1)*$divisions )+1;
+            }
+            $sql="select * from $table LIMIT $limit1,$limit2";
+            echo $sql;
+            $res=mysqli_query($db,$sql);
+        //echo $sql;
+        }
     ?>
     <ul class="gifts">
         <?php
@@ -45,7 +68,28 @@ $res=mysqli_query($db,$sql);
     <?php
     }
         ?>
-     
+     <div>
+        <?php
+         //echo $number_of_rows;
+         $i=1;
+          echo '<a href="'.$_SERVER['PHP_SELF'].'?page='.$i.'"';
+         if(isset($_GET['page']))
+             if($_GET['page']==$i)
+                 echo 'style="color:#3FA2B7;"';
+         echo '>'.$i.'</a> | ';
+         $val=$number_of_rows/$divisions;
+          $con=ceil($val);
+        
+         for($i=2;$i<=$con;$i++)
+         {
+              echo '<a href="'.$_SERVER['PHP_SELF'].'?page='.$i.'"';
+         if(isset($_GET['page']))
+             if($_GET['page']==$i)
+                 echo 'style="color:#3FA2B7;"';
+         echo '>'.$i.'</a> | ';
+         }
+         ?>
+     </div><hr>
     <script type="text/javascript">
          $('.cart').on('click',function(event){
           event.stopPropagation();

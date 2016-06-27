@@ -1,22 +1,27 @@
-    
+
 <html>
     <head> <script src="js/fabric.min.js" type="text/javascript"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
         <link rel="stylesheet" href="css/edit.css">
+        <link rel="stylesheet" href="login.css">
+        <link rel="stylesheet" href="index.css">
     </head>
 <nav>
     <?php
-include_once('navigation.html');
+include_once('index.php');
 ?>
     </nav>
+    <div id="btn">
     <div id="upload">
 	<form id="uploadImg" runat="server">
-  <input type="file" id="uploadedImg"/>
+  <input type="file" class="button" value="" id="uploadedImg" >
         </form></div>
-       <span  id="text-btn">T</span>
-    <div id="cropB">CROP</div>
-<canvas id="canvas"></canvas>
-        <input type="button" id="save-btn" value="save">
+        <button  id="text-btn" class="button">Text</button>
+  <!--  <button id="crop" class="button ">CROP</button>
+    <button id="italic">Italic</button>
+        <button id="underline">Underline</button></div>
+--><canvas id="canvas"></canvas>
+        <input type="button" id="save-btn" class="button" value="save">
 <form method="post" action="save.php" id="formjson" >
     <input type="text" id="stringjson" name="stringjson" value="">
     <input id="imagejpeg" value="" name="imagejpeg">
@@ -123,7 +128,8 @@ var reader = new FileReader();
             fill:'#000'
 }))};
     
-document.getElementById('#cropB').onclick=function() {
+document.getElementById('crop').onclick=function() {
+    
     image.selectable = true;
     disabled = true;
     rectangle.visible = false;
@@ -145,7 +151,68 @@ document.getElementById('#cropB').onclick=function() {
     };
 };
     
-   
+   function setStyle(object, styleName, value) {
+  if (object.setSelectionStyles && object.isEditing) {
+    var style = { };
+    style[styleName] = value;
+    object.setSelectionStyles(style);
+  }
+  else {
+    object[styleName] = value;
+  }
+}
+function getStyle(object, styleName) {
+  return (object.getSelectionStyles && object.isEditing)
+    ? object.getSelectionStyles()[styleName]
+    : object[styleName];
+}
+
+function addHandler(id, fn, eventName) {
+  document.getElementById(id)[eventName || 'onclick'] = function() {
+    var el = this;
+    canvases.forEach(function(canvas, obj) {
+      if (obj = canvas.getActiveObject()) {
+        fn.call(el, obj);
+        canvas.renderAll();
+      }
+    });
+  };
+}
+
+
+addHandler('bold', function(obj) {
+  var isBold = getStyle(obj, 'fontWeight') === 'bold';
+  setStyle(obj, 'fontWeight', isBold ? '' : 'bold');
+});
+
+addHandler('italic', function() {
+  var isItalic = getStyle(obj, 'fontStyle') === 'italic';
+  setStyle(obj, 'fontStyle', isItalic ? '' : 'italic');
+});
+
+addHandler('underline', function(obj) {
+    alert('underline');
+  var isUnderline = (getStyle(obj, 'textDecoration') || '').indexOf('underline') > -1;
+  setStyle(obj, 'textDecoration', isUnderline ? '' : 'underline');
+});
+
+addHandler('line-through', function(obj) {
+  var isLinethrough = (getStyle(obj, 'textDecoration') || '').indexOf('line-through') > -1;
+  setStyle(obj, 'textDecoration', isLinethrough ? '' : 'line-through');
+});
+
+addHandler('color', function(obj) {
+  setStyle(obj, 'fill', this.value);
+}, 'onchange');
+
+addHandler('bg-color', function(obj) {
+  setStyle(obj, 'textBackgroundColor', this.value);
+}, 'onchange');
+
+addHandler('size', function(obj) {
+  setStyle(obj, 'fontSize', parseInt(this.value, 10));
+}, 'onchange');
+
   
     </script>
 </html>

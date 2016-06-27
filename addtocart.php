@@ -1,4 +1,7 @@
 <?php
+if(isset($_SESSION['id']))
+ header("location:home.php");
+{
 
 $gid=$_GET['gid'];
 session_start();
@@ -17,4 +20,4 @@ if($res)
 header("location:cart.php");
 else
     echo'unsuccessful';
-?>
+}?>

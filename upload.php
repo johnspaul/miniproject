@@ -51,12 +51,13 @@ $foo->image_x               = 150;
 
         $db=mysqli_connect('localhost','root','','giftagift');
         $gname=$_POST['gname'];
-        
+        $price=$_POST['price'];
+        $desc=$_POST['desc'];
         $gimage=$dir_pics.'/' .$handle->file_dst_name ;
         echo $gimage;
-        $sql="insert into products(gid,gname,gimage) values(NULL,'$gname','$gimage')";
+        $sql="insert into products(gid,gname,gimage,price,description) values(NULL,'$gname','$gimage','$price','$desc')";
         mysqli_query($db,$sql);
-        
+        header("location:create.php");
         // we delete the temporary files
         $handle-> Clean();
 
